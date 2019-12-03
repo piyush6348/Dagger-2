@@ -19,6 +19,7 @@ public class Car {
 
     public void drive() {
         Log.d(TAG, "driving");
+        this.engine.start();
     }
 
     // Method Injection
