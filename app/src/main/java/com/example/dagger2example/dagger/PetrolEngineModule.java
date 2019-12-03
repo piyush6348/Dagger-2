@@ -8,8 +8,10 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public abstract class PetrolEngineModule {
+public class PetrolEngineModule {
 
-    @Binds
-    abstract Engine bindPetrolEngine(PetrolEngine engine);
+    @Provides
+    Engine bindPetrolEngine(PetrolEngine engine) {
+        return engine;
+    }
 }
