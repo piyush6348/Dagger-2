@@ -2,8 +2,11 @@ package com.example.dagger2example.car;
 
 import android.util.Log;
 
+import com.example.dagger2example.dagger.ActivityScope;
+
 import javax.inject.Inject;
 
+@ActivityScope
 public class Car {
     private static final String TAG = "Car";
 

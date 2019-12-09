@@ -13,21 +13,24 @@ import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Field injection
-    @Inject
-    Car car1, car2;
+  // Field injection
+  @Inject
+  Car car1, car2;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+  CarComponent carComponent;
 
-        CarComponent carComponent = DaggerCarComponent.builder()
-                .horsePower(150)
-                .engineCapacity(1000)
-                .build();
-        carComponent.inject(this);
-        car1.drive();
-        car2.drive();
-    }
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    carComponent = DaggerCarComponent.builder()
+            .horsePower(140)
+            .engineCapacity(1000)
+            .appComponent(((DaggerApplication) getApplication()).getAppComponent())
+            .build();
+    carComponent.inject(this);
+    car1.drive();
+    car2.drive();
+  }
 }

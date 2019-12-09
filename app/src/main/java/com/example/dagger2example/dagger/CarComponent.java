@@ -10,8 +10,8 @@ import javax.inject.Singleton;
 import dagger.BindsInstance;
 import dagger.Component;
 
-@Singleton
-@Component(modules = { WheelsModule.class, PetrolEngineModule.class })
+@ActivityScope
+@Component(dependencies = {AppComponent.class}, modules = { WheelsModule.class, PetrolEngineModule.class })
 public interface CarComponent {
     Car getCar();
 
@@ -25,6 +25,8 @@ public interface CarComponent {
 
         @BindsInstance
         Builder engineCapacity(@Named("engineCapacity") int engineCapacity);
+
+        Builder appComponent(AppComponent appComponent);
 
         CarComponent build();
     }
